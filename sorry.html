@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sorry ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 { color: #ff4d6d; margin-bottom: 10px; }
+        p { font-size: 18px; color: #333; margin: 5px 0; }
+        #typed { color: #ff4d6d; font-weight: bold; }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(45deg);
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+        .heart::before { top: -10px; }
+        .heart::after { left: -10px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Sorry "Jaan Pakhi" 💔</h1>
+        <p>You matter to me. I love you a lot ❤️</p>
+        <p id="typed"></p>
+        <p>Onk kosto kore eta banailam just for you Jaan. Please maaf kore dao.</p>
+    </div>
+
+    <audio autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-summer.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Typing effect
+        const message = "Please forgive me ❤️";
+        let i = 0;
+        const typed = document.getElementById("typed");
+        function typeWriter() {
+            if (i < message.length) {
+                typed.innerHTML += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
+        }
+        typeWriter();
+
+        // Hearts animation
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            heart.style.animation = `float ${3 + Math.random()*3}s linear forwards`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
