@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Our Memories ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* Heart shape */
+        .heart {
+            width: 300px;
+            height: 300px;
+            background: red;
+            position: relative;
+            transform: rotate(-45deg);
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -150px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 150px;
+            top: 0;
+        }
+
+        .heart img {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            border-radius: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Happy 4 Months Anniversary ❤️</h1>
+
+<div class="heart">
+    <img id="slide">
+</div>
+
+<button onclick="goBack()">⬅ Back</button>
+
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-summer.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let images = [];
+let index = 0;
+
+// Fetch images from backend
+fetch('/images')
+    .then(res => res.json())
+    .then(data => {
+        images = data;
+        if (images.length > 0) {
+            document.getElementById("slide").src = images[0];
+            startSlideshow();
+        }
+    });
+
+function startSlideshow() {
+    setInterval(() => {
+        index = (index + 1) % images.length;
+        document.getElementById("slide").src = images[index];
+    }, 2000);
+}
+
+function goBack() {
+    window.location.href = "/";
+}
+</script>
+
+</body>
+</html>
