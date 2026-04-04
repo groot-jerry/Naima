@@ -2,31 +2,41 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Our Memories ❤️</title>
+    <title>Our Memories</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             background: linear-gradient(to right, #ff758c, #ff7eb3);
             font-family: 'Segoe UI', sans-serif;
-            flex-direction: column;
         }
 
         h1 {
             color: white;
             margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #slide-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: width 0.5s, height 0.5s; /* smooth container resize */
         }
 
         #slide {
-            width: 500px;
-            height: 400px;
-            object-fit: cover;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         button {
@@ -36,6 +46,7 @@
             background: white;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -43,39 +54,59 @@
 
 <h1>Happy 4 Months Anniversary ❤️</h1>
 
-<img id="slide" src="">
+<div id="slide-container" style="width:500px; height:400px;">
+    <img id="slide" src="img/img_1.jpg" alt="Slideshow Image">
+</div>
 
 <button onclick="goBack()">⬅ Back</button>
 
-<audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-summer.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-let images = [];
-let index = 0;
+    const images = [
+        "img/img_1.jpg","img/img_2.jpg","img/img_3.jpg","img/img_4.jpg",
+        "img/img_5.jpg","img/img_6.jpg","img/img_7.jpg","img/img_8.jpg",
+        "img/img_9.jpg","img/img_10.jpg","img/img_11.jpg","img/img_12.jpg",
+        "img/img_13.jpg","img/img_14.jpg","img/img_15.jpg","img/img_16.jpg",
+        "img/img_17.jpg","img/img_18.jpg","img/img_19.jpg","img/img_20.jpg",
+        "img/img_21.jpg","img/img_22.jpg","img/img_23.jpg"
+    ];
 
-// Fetch images from Flask
-fetch('/images')
-    .then(res => res.json())
-    .then(data => {
-        images = data;
-        if (images.length > 0) {
-            document.getElementById("slide").src = images[0];
-            startSlideshow();
-        }
-    });
+    const slide = document.getElementById("slide");
+    const container = document.getElementById("slide-container");
+    let index = 0;
 
-function startSlideshow() {
-    setInterval(() => {
-        index = (index + 1) % images.length;
-        document.getElementById("slide").src = images[index];
-    }, 2000); // change image every 2 seconds
-}
+    function showImage(idx) {
+        slide.src = images[idx];
+        slide.onload = function() {
+            // Dynamically adjust container size to match image, but limit to viewport
+            const maxWidth = window.innerWidth * 0.9;
+            const maxHeight = window.innerHeight * 0.8;
 
-function goBack() {
-    window.location.href = "index.html";
-}
+            let imgWidth = slide.naturalWidth;
+            let imgHeight = slide.naturalHeight;
+
+            // Scale if larger than viewport
+            const widthRatio = imgWidth / maxWidth;
+            const heightRatio = imgHeight / maxHeight;
+            const maxRatio = Math.max(widthRatio, heightRatio, 1);
+
+            container.style.width = (imgWidth / maxRatio) + "px";
+            container.style.height = (imgHeight / maxRatio) + "px";
+        };
+    }
+
+    function startSlideshow() {
+        showImage(index);
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            showImage(index);
+        }, 3000); // 3 seconds per image
+    }
+
+    startSlideshow();
+
+    function goBack() {
+        window.location.href = "index.html";
+    }
 </script>
 
 </body>
