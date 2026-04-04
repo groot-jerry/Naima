@@ -13,7 +13,7 @@ def index():
 def gallery():
     return send_from_directory(".", "gallery.html")
 
-@app.route("/img")
+@app.route("/images")
 def get_images():
     files = os.listdir(IMAGE_FOLDER)
     images = [f"/img/{f}" for f in files]  # include all files
