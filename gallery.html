@@ -6,47 +6,27 @@
     <style>
         body {
             margin: 0;
+            padding: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             background: linear-gradient(to right, #ff758c, #ff7eb3);
             font-family: 'Segoe UI', sans-serif;
+            flex-direction: column;
         }
 
-        h1 { color: white; margin-bottom: 20px; }
-
-        /* Heart shape */
-        .heart {
-            width: 300px;
-            height: 300px;
-            background: red;
-            position: relative;
-            transform: rotate(-45deg);
+        h1 {
+            color: white;
+            margin-bottom: 20px;
         }
 
-        .heart::before, .heart::after {
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: red;
-            border-radius: 50%;
-        }
-
-        .heart::before { top: -150px; left: 0; }
-        .heart::after { left: 150px; top: 0; }
-
-        .heart img {
-            position: absolute;
-            width: 200px;
-            height: 200px;
+        #slide {
+            width: 500px;
+            height: 400px;
             object-fit: cover;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         button {
@@ -59,14 +39,11 @@
         }
     </style>
 </head>
-
 <body>
 
 <h1>Happy 4 Months Anniversary ❤️</h1>
 
-<div class="heart">
-    <img id="slide">
-</div>
+<img id="slide" src="">
 
 <button onclick="goBack()">⬅ Back</button>
 
@@ -78,7 +55,7 @@
 let images = [];
 let index = 0;
 
-// Fetch images dynamically from Flask
+// Fetch images from Flask
 fetch('/images')
     .then(res => res.json())
     .then(data => {
@@ -93,7 +70,7 @@ function startSlideshow() {
     setInterval(() => {
         index = (index + 1) % images.length;
         document.getElementById("slide").src = images[index];
-    }, 2000);
+    }, 2000); // change image every 2 seconds
 }
 
 function goBack() {
