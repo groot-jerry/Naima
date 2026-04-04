@@ -13,13 +13,10 @@ def index():
 def gallery():
     return send_from_directory(".", "gallery.html")
 
-@app.route("/images")
+@app.route("/img")
 def get_images():
     files = os.listdir(IMAGE_FOLDER)
-    images = [
-        f"/img/{f}" for f in files
-        if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))
-    ]
+    images = [f"/img/{f}" for f in files]  # include all files
     return jsonify(images)
 
 @app.route("/img/<filename>")
