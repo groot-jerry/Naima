@@ -1,24 +1,24 @@
-from flask import Flask, jsonify, send_from_directory, render_template
+from flask import Flask, jsonify, send_from_directory
 import os
 
-app = Flask(__name__)  # Flask will look for /templates automatically
+app = Flask(__name__)
 
 IMAGE_FOLDER = "img"
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return send_from_directory(".", "index.html")
 
 @app.route("/gallery")
 def gallery():
-    return render_template("gallery.html")
+    return send_from_directory(".", "gallery.html")
 
 @app.route("/images")
 def get_images():
     files = os.listdir(IMAGE_FOLDER)
     images = [
         f"/img/{f}" for f in files
-        if f.lower().endswith(('.png', '.jpg', '.jpeg'))
+        if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))
     ]
     return jsonify(images)
 

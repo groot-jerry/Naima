@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Our Memories ❤️</title>
-
     <style>
         body {
             margin: 0;
@@ -16,10 +15,7 @@
             font-family: 'Segoe UI', sans-serif;
         }
 
-        h1 {
-            color: white;
-            margin-bottom: 20px;
-        }
+        h1 { color: white; margin-bottom: 20px; }
 
         /* Heart shape */
         .heart {
@@ -30,8 +26,7 @@
             transform: rotate(-45deg);
         }
 
-        .heart::before,
-        .heart::after {
+        .heart::before, .heart::after {
             content: "";
             position: absolute;
             width: 300px;
@@ -40,15 +35,8 @@
             border-radius: 50%;
         }
 
-        .heart::before {
-            top: -150px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: 150px;
-            top: 0;
-        }
+        .heart::before { top: -150px; left: 0; }
+        .heart::after { left: 150px; top: 0; }
 
         .heart img {
             position: absolute;
@@ -90,7 +78,7 @@
 let images = [];
 let index = 0;
 
-// Fetch images from backend
+// Fetch images dynamically from Flask
 fetch('/images')
     .then(res => res.json())
     .then(data => {
