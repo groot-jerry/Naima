@@ -22,12 +22,22 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        h1 { color: #ff4d6d; }
-        p { font-size: 18px; }
+        h1 { color: #ff4d6d; margin-bottom: 10px; }
+        p { font-size: 18px; margin: 5px 0; }
         #typed { color: #ff4d6d; font-weight: bold; }
 
+        #click-note {
+            font-size: 14px;
+            color: #ff4d6d;
+            font-style: italic;
+            margin-top: 15px;  /* Added space above */
+            margin-bottom: 15px;
+            animation: blink 1.2s infinite;
+
+        }
+
         button {
-            margin-top: 15px;
+            margin-top: 10px;
             padding: 12px 20px;
             border: none;
             background: #ff4d6d;
@@ -35,17 +45,21 @@
             font-size: 16px;
             border-radius: 10px;
             cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff1a3c;
         }
     </style>
 </head>
 
 <body>
 <div class="card">
-    <h1>Sorry "Jaan Pakhi" 💔</h1>
+    <h1>I am Extreamly Sorry "Jaan Pakhi" 💔</h1>
     <p>You matter to me ❤️</p>
     <p id="typed"></p>
-    <p>Please maaf kore dao</p>
-
+    <div id="click-note">Click here ⬇️</div>
     <button onclick="goToGallery()">Happy 4 Months Anniversary ❤️</button>
 </div>
 
