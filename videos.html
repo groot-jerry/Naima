@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Our Memories 🎥</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 32px;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Grid Layout */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+
+        /* Video Style */
+        iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        iframe:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+        }
+
+        /* Button Style */
+        button {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border: none;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Our Memories 🎥</h1>
+
+<div class="video-container">
+
+    <iframe src="https://drive.google.com/file/d/1RkUd_gdg2541Ii4havGY3TM0TBUz-thq/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/15WcT3Zt5w9CYr2yyM_FuArAeVUfe-CFf/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1OGXhd0vXEcH5LfO-G4ACawoA3iu1qYTP/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1pjVCZhPuwem9PS2-rTY9ZSmaL2ZGUwnZ/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1N_c5xfrpoIuiodF31EFkMbWrQ_siWlcj/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/12ce3ije76JHBNegiMGEBWKVSMYyv-M1Q/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1-eVsZkptw5YNXCzbb48M6VzJ5-Z6hZXt/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1r0tqKVGrUhrU48qS2ngKy9I8KdMGBt9c/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1ALnDxnoneGs_3QfhLPU6IlYEPbrkw7K7/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1kLWzO42HZssrncdxu0ZTDzISvkkgdsOi/preview" allow="autoplay"></iframe>
+
+    <iframe src="https://drive.google.com/file/d/1FnqinkUv19QMYI2VHPzxi8FtdSLw2Ed6/preview" allow="autoplay"></iframe>
+
+</div>
+
+<button onclick="goBack()">⬅ Back</button>
+
+<script>
+function goBack() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

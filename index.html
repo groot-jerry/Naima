@@ -12,7 +12,61 @@
             align-items: center;
             background: linear-gradient(to right, #ff758c, #ff7eb3);
             font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Background Text */
+        .bg-text {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 60px;
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        #bg-i {
+            top: 20px;
+            left: 20px;
+        }
+
+        #bg-love {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #bg-you {
+            top: 20px;
+            right: 20px;
+        }
+
+        #bg-naima {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: glow 2s infinite alternate;
+        }
+
+        /* Heart Outline with Pulse */
+        #bg-heart {
+            position: absolute;
+            font-size: 100px;
+            color: transparent;
+            -webkit-text-stroke: 3px rgba(255,255,255,0.4);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 1.5s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
 
         .card {
             background: white;
@@ -20,6 +74,7 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 10;
         }
 
         h1 { color: #ff4d6d; margin-bottom: 10px; }
@@ -30,10 +85,14 @@
             font-size: 14px;
             color: #ff4d6d;
             font-style: italic;
-            margin-top: 15px;  /* Added space above */
+            margin-top: 15px;
             margin-bottom: 15px;
             animation: blink 1.2s infinite;
+        }
 
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
         }
 
         button {
@@ -55,12 +114,23 @@
 </head>
 
 <body>
+
+<!-- Background Elements -->
+<div id="bg-i" class="bg-text">I</div>
+<div id="bg-love" class="bg-text">Love</div>
+<div id="bg-you" class="bg-text">You</div>
+<div id="bg-naima" class="bg-text">Naima</div>
+<div id="bg-heart">❤</div>
+
+<!-- Main Card -->
 <div class="card">
-    <h1>I am Extreamly Sorry "Jaan Pakhi" 💔</h1>
+    <h1>I am Extremely Sorry "Jaan Pakhi" 💔</h1>
     <p>You matter to me ❤️</p>
     <p id="typed"></p>
     <div id="click-note">Click here ⬇️</div>
+    <div style="display:flex; gap:10px; justify-content:center;">
     <button onclick="goToGallery()">Happy 4 Months Anniversary ❤️</button>
+    <button onclick="goToVideos()">Our Memories 🎥</button>
 </div>
 
 <script>
@@ -79,6 +149,10 @@
     function goToGallery() {
         window.location.href = "gallery.html";
     }
+    function goToVideos() {
+    window.location.href = "videos.html";
+}
 </script>
+
 </body>
 </html>
